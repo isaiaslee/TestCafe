@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test:todoist": "testcafe chrome Todoist/tests/*.js --skip-js-errors"
+    "test:todoist": "testcafe chrome Todoist_Frontend/tests/*.js --skip-js-errors"
   },
   
   "dependencies": {
