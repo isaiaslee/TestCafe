@@ -1,12 +1,11 @@
 {
   "scripts": {
-    "test:todoist": "testcafe chrome Todoist_Frontend/tests/*.js --skip-js-errors"
+    "test:todoist": "testcafe chrome Todoist_Frontend/tests/*.js --skip-js-errors",
+    "test:index": "testcafe chrome Index.js --skip-js-errors"
   },
-  
   "dependencies": {
-    "testcafe": "^2.0.1",
+    "dotenv": "^16.0.3",
+    "testcafe": "^1.9.4",
     "testcafe-blink-diff": "^0.4.6"
-
   }
 }
-

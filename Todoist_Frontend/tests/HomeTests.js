@@ -10,7 +10,6 @@ const getUrl = ClientFunction(() => window.location.href);
 fixture('Home Page')
 .page(loginUrl)
 .beforeEach(async t => {
-    
     LoginPage.setUserName('isaias.iniguez@wizeline.com');
     LoginPage.setPassword('In1gu3z50#');
     LoginPage.clickOnLoginButton();
