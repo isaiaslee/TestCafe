@@ -2,16 +2,18 @@ import {ClientFunction} from 'testcafe'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
 
-const loginUrl = 'https://todoist.com/auth/login?success_page=%2Fapp%2Ftoday'
-const homeUrl = 'https://todoist.com/app/today'
+const loginUrl = 'https://todoist.com/app/today'
+const homeUrl = 'https://todoist.com/auth/login?success_page=%2Fapp%2Ftoday'
 
 const getUrl = ClientFunction(() => window.location.href);
+
+require('dotenv').config()
 
 fixture('Home Page')
 .page(loginUrl)
 .beforeEach(async t => {
-    LoginPage.setUserName('isaias.iniguez@wizeline.com');
-    LoginPage.setPassword('In1gu3z50#');
+    LoginPage.setUserName(process.env.ACCOUNT);
+    LoginPage.setPassword(process.env.PASSWORD);
     LoginPage.clickOnLoginButton();
 
     await t.wait(10000);
