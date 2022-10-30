@@ -12,8 +12,8 @@ require('dotenv').config()
 fixture('Home Page')
 .page(loginUrl)
 .beforeEach(async t => {
-    LoginPage.setUserName("isaias.iniguez@wizeline.com");
-    LoginPage.setPassword("isaias.iniguez@wizeline.com");
+    LoginPage.setUserName(process.env.ACCOUNT);
+    LoginPage.setPassword(process.env.PASSWORD);
     LoginPage.clickOnLoginButton();
 
     await t.wait(10000);
