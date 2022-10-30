@@ -17,24 +17,24 @@ test('Loading Login Page', async t => {
 });
 
 test('Sucessful Login', async t => {
-    LoginPage.setUserName(process.env.ACCOUNT);
-    LoginPage.setPassword(process.env.PASSWORD);
+    LoginPage.setUserName("isaiasiniguez@wizeline.com");
+    LoginPage.setPassword("In1gu3z50#");
     LoginPage.clickOnLoginButton();
 
     await t.expect(HomePage.todayLabel).exists;
 });
 
 test('Unsucessful Login - Invalid Username', async t => {
-    LoginPage.setUserName(process.env.ACCOUNT);
-    LoginPage.setPassword(process.env.PASSWORD);
+    LoginPage.setUserName("saias.iniguez@wizeline.com");
+    LoginPage.setPassword("In1gu3z50#");
     LoginPage.clickOnLoginButton();
 
     await t.expect(LoginPage.responseCard.innerText).contains('Wrong email or password.');
 });
 
 test('Unsucessful Login - Invalid Password', async t => {
-    LoginPage.setUserName(process.env.ACCOUNT);
-    LoginPage.setPassword(process.env.PASSWORD);
+    LoginPage.setUserName("isaiasiniguez@wizeline.com");
+    LoginPage.setPassword("In1gu3z50");
     LoginPage.clickOnLoginButton();
 
     await t.expect(LoginPage.responseCard.innerText).contains('Wrong email or password.');
