@@ -19,11 +19,13 @@ fixture('Home Page')
     await t.wait(10000);
 });
 
+//Performs a successful login, using credentials stored preferably in a .env file
 test('Loading Home Page', async t => {
     await t
     .expect(getUrl()).contains(homeUrl);
 });
 
+//Create a new task and validate it was created correctly.
 test('Create a new task', async t => {
     HomePage.clickOnAddTask();
     HomePage.setTaskTitle('SQA single task');
@@ -32,6 +34,7 @@ test('Create a new task', async t => {
     await t.expect(HomePage.singleTaskLabel).exists;
 });
 
+//Create 10 new tasks and validate they were created correctly.
 test('Create 10 new task', async t => {
     for (let i = 1; i < 11; i++) {
         HomePage.clickOnAddTask();
