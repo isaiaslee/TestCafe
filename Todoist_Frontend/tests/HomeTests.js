@@ -2,8 +2,8 @@ import {ClientFunction} from 'testcafe'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
 
-const loginUrl = 'https://todoist.com/app/today'
-const homeUrl = 'https://todoist.com/auth/login?success_page=%2Fapp%2Ftoday'
+const loginUrl = 'https://todoist.com/auth/login?success_page=%2Fapp%2Ftoday'
+const homeUrl = 'https://todoist.com/app/today'
 
 const getUrl = ClientFunction(() => window.location.href);
 
@@ -28,19 +28,28 @@ test('Loading Home Page', async t => {
 //Create a new task and validate it was created correctly.
 test('Create a new task', async t => {
     HomePage.clickOnAddTask();
-    HomePage.setTaskTitle('SQA single task');
-    HomePage.clickOnAddTask();
+    await t.wait(2000);
+    HomePage.setTaskTitle('SQA');
+    await t.wait(2000);
+    HomePage.clickOnAddTaskBtn();
+    await t.wait(2000);
 
     await t.expect(HomePage.singleTaskLabel).exists;
+    await t.wait(2000);
 });
 
 //Create 10 new tasks and validate they were created correctly.
 test('Create 10 new task', async t => {
     for (let i = 1; i < 11; i++) {
         HomePage.clickOnAddTask();
-        HomePage.setTaskTitle('Task number' + i + 'of 10');
-        HomePage.clickOnAddTask();
-        await t.expect(HomePage.tenTaskLabel).exists;
+        await t.wait(2000);
+        let taskNumber = i.toString();
+        HomePage.setTaskTitle(taskNumber);
+        await t.wait(2000);
+        HomePage.clickOnAddTaskBtn();
+        await t.wait(2000); 
+        await t.expect(HomePage.tenTaskLabel.withText(taskNumber)).exists;
+        await t.wait(2000);
       }
     
 
